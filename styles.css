@@ -38,7 +38,7 @@ nav ul li a {
 }
 
 aside {
-    background-color: #f0f0f0;
+    background-color: linear-gradient(to right, #f0f0f0, #0000ff);
     padding: 1rem;
     width: 200px;
 }
