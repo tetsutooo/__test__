@@ -1,15 +1,17 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
+ * @param {number} x
+ * @param {number} y
  * @returns {number}
  */
-export function add(): number;
+export function add(x: number, y: number): number;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly add: () => number;
+  readonly add: (a: number, b: number) => number;
 }
 
 export type SyncInitInput = BufferSource | WebAssembly.Module;

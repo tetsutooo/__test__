@@ -1,10 +1,12 @@
 let wasm;
 
 /**
+ * @param {number} x
+ * @param {number} y
  * @returns {number}
  */
-export function add() {
-    const ret = wasm.add();
+export function add(x, y) {
+    const ret = wasm.add(x, y);
     return ret;
 }
 
