@@ -1,107 +1,55 @@
 <!DOCTYPE html>
-<!-- HTML5文書であることを宣言します -->
-
 <html lang="ja">
-<!-- HTML文書の開始。lang属性で日本語を指定 -->
-
 <head>
-    <!-- ヘッド部分の開始。メタデータを含む -->
-
     <meta charset="UTF-8">
-    <!-- 文字エンコーディングをUTF-8に設定 -->
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- レスポンシブデザイン用のビューポート設定 -->
-
-    <title>WebAssembly計算機</title>
-    <!-- ブラウザのタブに表示されるタイトル -->
-
-    <link rel="stylesheet" href="styles.css">
-    <!-- 外部CSSファイル（styles.css）をリンク -->
-
-    <link rel="icon" type="image/png" href="sidebar-image.png">
+    <title>WebAssembly 計算機</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-
 <body>
-    <!-- 本文の開始 -->
-
-    <header>
-        <!-- ヘッダー部分の開始 -->
-        <h1>ウェブサイトのヘッダー</h1>
-        <!-- ヘッダー内の主要見出し -->
-
-        <nav>
-            <!-- ナビゲーションメニューの開始 -->
-            <ul>
-                <!-- 順序なしリストの開始 -->
-                <li><a href="index.html">ホーム</a></li>
-                <li><a href="about.html">概要</a></li>
-                <li><a href="#contact">連絡先</a></li>
-                <!-- リスト項目とそのリンク -->
-            </ul>
-        </nav>
-    </header>
-
-    <div class="container">
-        <!-- メインコンテンツとサイドバーを含むコンテナ -->
-
-        <aside>
-            <!-- サイドバーの開始 -->
-            <h2>サイドバー</h2>
-            <!-- サイドバーの見出し -->
-            <ul>
-                <!-- サイドバー内のリンクリスト -->
-                <li><a href="#item1">項目1</a></li>
-                <li><a href="#item2">項目2</a></li>
-                <li><a href="#item3">項目3</a></li>
-            </ul>
-            <img src="sidebar-image.png" alt="サイドバーの装飾画像" width="180" height="120">
-
-            
-        </aside>
-
-        <main>
-            <!-- メインコンテンツ領域の開始 -->
-            <h2>メインコンテンツ</h2>
-            <!-- メインコンテンツの見出し -->
-            <p>ここにメインコンテンツが入ります。より複雑なレイアウトの例として、ヘッダー、フッター、サイドバーを追加しました。</p>
-            <!-- メインコンテンツの段落 -->
-
+    <div class="sidebar">
+        <button class="close-btn">&times;</button>
+        <h2>サイドバー</h2>
+        <ul>
+            <li><a href="#item1">項目1</a></li>
+            <li><a href="#item2">項目2</a></li>
+            <li><a href="#item3">項目3</a></li>
+        </ul>
+    </div>
+    
+    <div class="main-content">
+        <button class="open-btn">&#9776;</button>
+        <div class="container">
             <h1>WebAssembly 計算機</h1>
             <input type="number" id="x" placeholder="x値">
             <input type="number" id="y" placeholder="y値">
             <button id="calculate">計算</button>
             <p>結果: <span id="result"></span></p>
-        
-            <script type="module">
-                import init, { add } from './pkg/wasm_math.js';
-        
-                async function run() {
-                    await init();
-        
-                    const xInput = document.getElementById('x');
-                    const yInput = document.getElementById('y');
-                    const calculateButton = document.getElementById('calculate');
-                    const resultSpan = document.getElementById('result');
-        
-                    calculateButton.addEventListener('click', () => {
-                        const x = parseInt(xInput.value) || 0;
-                        const y = parseInt(yInput.value) || 0;
-                        const result = add(x, y);
-                        resultSpan.textContent = result;
-                    });
-                }
-        
-                run();
-            </script>
-        </main>
+        </div>
     </div>
 
-    <footer>
-        <!-- フッター部分の開始 -->
-        <p>&copy; 2024 あなたの名前. All rights reserved.</p>
-        <!-- 著作権表示 -->
-    </footer>
+    <script type="module">
+        import init, { add } from './pkg/wasm_math.js';
+
+        async function run() {
+            await init();
+
+            const xInput = document.getElementById('x');
+            const yInput = document.getElementById('y');
+            const calculateButton = document.getElementById('calculate');
+            const resultSpan = document.getElementById('result');
+
+            calculateButton.addEventListener('click', () => {
+                const x = parseInt(xInput.value) || 0;
+                const y = parseInt(yInput.value) || 0;
+                const result = add(x, y);
+                resultSpan.textContent = result;
+            });
+        }
+
+        run();
+    </script>
+    <script src="sidebar.js"></script>
 </body>
 </html>
-<!-- HTML文書の終了 -->
