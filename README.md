@@ -22,3 +22,36 @@ right?
 
 $$E=mc^2$$
 
+---
+### 環境構築
+RustとWebAssembly用のツールチェーンがインストールされていることを確認。
+```
+rustup target add wasm32-unknown-unknown
+cargo install wasm-pack
+```
+新しいRustプロジェクトの作成
+```
+cargo new --lib wasm_math
+cd wasm_math
+```
+
+### ビルド
+```
+wasm-pack build --target web
+```
+- Cargo.toml
+- src/ (いらない？)
+- pkg/
+- .gitignore
+をpush.
+
+.gitignoreには以下の編集を加える
+```
+/target
+   Cargo.lock
+```
+
+
+
+---
+Claude 3.5 Sonnetで作成
