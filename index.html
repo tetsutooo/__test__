@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebAssembly 計算機</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <div class="sidebar">
-        <button class="close-btn">&times;</button>
-        <h2>サイドバー</h2>
         <ul>
-            <li><a href="#item1">項目1</a></li>
-            <li><a href="#item2">項目2</a></li>
-            <li><a href="#item3">項目3</a></li>
+            <li><a href="#" onclick="loadContent('item1')">item1</a></li>
+            <li><a href="#" onclick="loadContent('item2')">item2</a></li>
+            <li><a href="#" onclick="loadContent('item3')">item3</a></li>
         </ul>
     </div>
     
@@ -50,6 +47,25 @@
 
         run();
     </script>
-    <script src="sidebar.js"></script>
+
+    <script>
+        function loadContent(item) {
+            const contentDiv = document.getElementById('content');
+            switch(item) {
+                case 'item1':
+                    contentDiv.innerHTML = '<h1>Item 1のページ</h1><p>ここにItem 1の内容を記述します。</p>';
+                    break;
+                case 'item2':
+                    contentDiv.innerHTML = '<h1>Item 2のページ</h1><p>ここにItem 2の内容を記述します。</p>';
+                    break;
+                case 'item3':
+                    contentDiv.innerHTML = '<h1>Item 3のページ</h1><p>ここにItem 3の内容を記述します。</p>';
+                    break;
+                default:
+                    contentDiv.innerHTML = '<h1>エラー</h1><p>ページが見つかりません。</p>';
+            }
+        }
+    </script>
+    
 </body>
 </html>
