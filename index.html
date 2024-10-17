@@ -65,15 +65,29 @@
             <p>ここにメインコンテンツが入ります。より複雑なレイアウトの例として、ヘッダー、フッター、サイドバーを追加しました。</p>
             <!-- メインコンテンツの段落 -->
 
-            <h1>WebAssembly Math Example</h1>
-            <p>Result of 2 + 3 = <span id="result"></span></p>
+            <h1>WebAssembly 計算機</h1>
+            <input type="number" id="x" placeholder="x値">
+            <input type="number" id="y" placeholder="y値">
+            <button id="calculate">計算</button>
+            <p>結果: <span id="result"></span></p>
+        
             <script type="module">
                 import init, { add } from './pkg/wasm_math.js';
         
                 async function run() {
                     await init();
-                    const result = add();
-                    document.getElementById('result').textContent = result;
+        
+                    const xInput = document.getElementById('x');
+                    const yInput = document.getElementById('y');
+                    const calculateButton = document.getElementById('calculate');
+                    const resultSpan = document.getElementById('result');
+        
+                    calculateButton.addEventListener('click', () => {
+                        const x = parseInt(xInput.value) || 0;
+                        const y = parseInt(yInput.value) || 0;
+                        const result = add(x, y);
+                        resultSpan.textContent = result;
+                    });
                 }
         
                 run();
