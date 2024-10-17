@@ -68,6 +68,21 @@ a {
     color: #0066cc;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+iframe {
+    max-width: 100%;
+}
+
+audio {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+
 a:hover {
     text-decoration: underline;
 }
