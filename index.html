@@ -3,48 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebAssembly計算機</title>
-    <link rel="stylesheet" href="style.css">
+    <title>複雑なレイアウト例</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>ウェブサイトのヘッダー</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#about">概要</a></li>
+                <li><a href="#contact">連絡先</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <div class="container">
-        <aside class="sidebar">
-            <nav>
-                <ul>
-                    <li>項目1</li>
-                    <li>項目2</li>
-                </ul>
-            </nav>
+        <aside>
+            <h2>サイドバー</h2>
+            <ul>
+                <li><a href="#item1">項目1</a></li>
+                <li><a href="#item2">項目2</a></li>
+                <li><a href="#item3">項目3</a></li>
+            </ul>
         </aside>
-        <main class="main-content">
-            <h1>メインコンテンツ</h1>
-            <!--
-            <script type="module">
-                import init, { add } from './pkg/wasm_math.js';
-        
-                async function run() {
-                    await init();
-        
-                    const xInput = document.getElementById('x');
-                    const yInput = document.getElementById('y');
-                    const calculateButton = document.getElementById('calculate');
-                    const resultSpan = document.getElementById('result');
-        
-                    calculateButton.addEventListener('click', () => {
-                        const x = parseInt(xInput.value) || 0;
-                        const y = parseInt(yInput.value) || 0;
-                        const result = add(x, y);
-                        resultSpan.textContent = result;
-                    });
-                }
-        
-                run();
-                -->
-            </script>
+
+        <main>
+            <h2>メインコンテンツ</h2>
+            <p>ここにメインコンテンツが入ります。より複雑なレイアウトの例として、ヘッダー、フッター、サイドバーを追加しました。</p>
         </main>
     </div>
+
+    <footer>
+        <p>&copy; 2024 あなたの名前. All rights reserved.</p>
+    </footer>
 </body>
 </html>
-
-
-    
