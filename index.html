@@ -3,68 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebAssembly 計算機</title>
+    <title>WebAssembly計算機</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="sidebar">
-        <ul>
-            <li><a href="#" onclick="loadContent('item1')">item1</a></li>
-            <li><a href="#" onclick="loadContent('item2')">item2</a></li>
-            <li><a href="#" onclick="loadContent('item3')">item3</a></li>
-        </ul>
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li>項目1</li>
+                    <li>項目2</li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <h1>メインコンテンツ</h1>
+            <script type="module">
+                import init, { add } from './pkg/wasm_math.js';
+        
+                async function run() {
+                    await init();
+        
+                    const xInput = document.getElementById('x');
+                    const yInput = document.getElementById('y');
+                    const calculateButton = document.getElementById('calculate');
+                    const resultSpan = document.getElementById('result');
+        
+                    calculateButton.addEventListener('click', () => {
+                        const x = parseInt(xInput.value) || 0;
+                        const y = parseInt(yInput.value) || 0;
+                        const result = add(x, y);
+                        resultSpan.textContent = result;
+                    });
+                }
+        
+                run();
+            </script>
+        </main>
     </div>
-    
-    <div class="content">
-        <div class="container">
-            <h1>WebAssembly 計算機</h1>
-            <input type="number" id="x" placeholder="x値">
-            <input type="number" id="y" placeholder="y値">
-            <button id="calculate">計算</button>
-            <p>結果: <span id="result"></span></p>
-        </div>
-    </div>
-
-    <script type="module">
-        import init, { add } from './pkg/wasm_math.js';
-
-        async function run() {
-            await init();
-
-            const xInput = document.getElementById('x');
-            const yInput = document.getElementById('y');
-            const calculateButton = document.getElementById('calculate');
-            const resultSpan = document.getElementById('result');
-
-            calculateButton.addEventListener('click', () => {
-                const x = parseInt(xInput.value) || 0;
-                const y = parseInt(yInput.value) || 0;
-                const result = add(x, y);
-                resultSpan.textContent = result;
-            });
-        }
-
-        run();
-    </script>
-
-    <script>
-        function loadContent(item) {
-            const contentDiv = document.getElementById('content');
-            switch(item) {
-                case 'item1':
-                    contentDiv.innerHTML = '<h1>Item 1のページ</h1><p>ここにItem 1の内容を記述します。</p>';
-                    break;
-                case 'item2':
-                    contentDiv.innerHTML = '<h1>Item 2のページ</h1><p>ここにItem 2の内容を記述します。</p>';
-                    break;
-                case 'item3':
-                    contentDiv.innerHTML = '<h1>Item 3のページ</h1><p>ここにItem 3の内容を記述します。</p>';
-                    break;
-                default:
-                    contentDiv.innerHTML = '<h1>エラー</h1><p>ページが見つかりません。</p>';
-            }
-        }
-    </script>
-    
 </body>
 </html>
+
+
+    
