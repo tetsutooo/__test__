@@ -2,19 +2,48 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "nav main"
+        "nav aside"
+        "footer footer";
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr auto auto;
     min-height: 100vh;
 }
-/*
+
 header {
-    background-color: #333;
+    grid-area: header;
+    background-color: #4CAF50;
     color: white;
-    padding: 1rem;
+    text-align: center;
+    padding: 1em;
 }
 
-header h1 {
-    margin: 0;
+nav {
+    grid-area: nav;
+    background-color: #f1f1f1;
+    padding: 1em;
+}
+
+main {
+    grid-area: main;
+    padding: 1em;
+}
+
+aside {
+    grid-area: aside;
+    background-color: #ddd;
+    padding: 1em;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
 }
 
 nav ul {
@@ -23,54 +52,10 @@ nav ul {
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 1rem;
+    margin-bottom: 0.5em;
 }
 
 nav ul li a {
-    color: white;
     text-decoration: none;
-}
-*/
-.container {
-    display: flex;
-    flex: 1;
-}
-
-
-aside {
-    background-color: #f0f0f0;
-    padding: 1rem;
-    width: 200px;
-}
-
-aside ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-aside ul li {
-    margin-bottom: 0.5rem;
-}
-
-main {
-    flex: 1;
-    padding: 1rem;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    height: 25px;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-}
-
-a {
-    color: #0066cc;
-}
-
-a:hover {
-    text-decoration: underline;
+    color: #333;
 }
