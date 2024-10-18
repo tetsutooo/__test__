@@ -1,6 +1,10 @@
-body, html {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
     height: 100%;
     font-family: Arial, sans-serif;
 }
@@ -19,7 +23,6 @@ body, html {
 
 .sidebar ul {
     list-style-type: none;
-    padding: 0;
 }
 
 .sidebar li {
@@ -27,8 +30,20 @@ body, html {
 }
 
 .main-content {
-    flex-grow: 1;
+    flex: 1;
     background-color: #34495e;
     color: white;
     padding: 20px;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
 }
