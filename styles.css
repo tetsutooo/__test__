@@ -3,7 +3,6 @@ body {
     min-height: 100vh;
     grid-template-rows: 100px 1fr 100px;
     grid-template-columns: 100px 1fr;
-    // グリッドセルに自由に名前をつけます。
     grid-template-areas:
         "header header"
         "nav contents"
@@ -11,13 +10,17 @@ body {
 }
 header {
     grid-area: header;
+    background-color: #333333;
 }
 main {
     grid-area: contents;
+    background-color: #555555;
 }
 nav {
     grid-area: nav;
+    background-color: #444444;
 }
 footer {
     grid-area: footer;
+    background-color: #333333;
 }
