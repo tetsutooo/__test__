@@ -14,6 +14,7 @@ header {
     color: #f0f0f0;
     text-align: center;
     margin-top: -1rem;
+    margin-left: -1rem;
 }
 main {
     grid-area: contents;
@@ -24,10 +25,13 @@ nav {
     grid-area: nav;
     background-color: #444444;
     color: #f0f0f0;
+    margin-left: -1rem;
 }
 footer {
     grid-area: footer;
     background-color: #333333;
     color: #f0f0f0;
     text-align: center;
+    margin-left: -1rem;
+    margin-bottom: -1rem;
 }
