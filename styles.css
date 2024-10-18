@@ -11,16 +11,20 @@ body {
 header {
     grid-area: header;
     background-color: #333333;
+    color: #f0f0f0;
 }
 main {
     grid-area: contents;
     background-color: #555555;
+    color: #f0f0f0;
 }
 nav {
     grid-area: nav;
     background-color: #444444;
+    color: #f0f0f0;
 }
 footer {
     grid-area: footer;
     background-color: #333333;
+    color: #f0f0f0;
 }
