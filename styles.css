@@ -12,6 +12,7 @@ header {
     grid-area: header;
     background-color: #333333;
     color: #f0f0f0;
+    text-align: center;
 }
 main {
     grid-area: contents;
@@ -27,4 +28,5 @@ footer {
     grid-area: footer;
     background-color: #333333;
     color: #f0f0f0;
+    text-align: center;
 }
