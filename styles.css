@@ -9,7 +9,6 @@ body {
 }
 
 header {
-    grid-area: header;
     background-color: #4CAF50;
     color: white;
     text-align: center;
@@ -17,24 +16,20 @@ header {
 }
 
 nav {
-    grid-area: nav;
     background-color: #f1f1f1;
     padding: 1em;
 }
 
 main {
-    grid-area: main;
     padding: 1em;
 }
 
 aside {
-    grid-area: aside;
     background-color: #ddd;
     padding: 1em;
 }
 
 footer {
-    grid-area: footer;
     background-color: #333;
     color: white;
     text-align: center;
@@ -56,15 +51,3 @@ nav ul li a {
     color: #333;
 }
 
-@media (max-width: 600px) {
-    body {
-        grid-template-areas:
-            "header"
-            "nav"
-            "main"
-            "aside"
-            "footer";
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto auto auto;
-    }
-}
