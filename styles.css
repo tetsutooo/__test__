@@ -7,6 +7,8 @@ body {
         "header header"
         "nav contents"
         "footer footer";
+    row-gap: 10px;
+    column-gap: 20px
 }
 header {
     grid-area: header;
