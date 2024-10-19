@@ -30,6 +30,22 @@ nav {
     padding: 1rem;
     margin-left: -1rem;
 }
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+nav ul li a:hover {
+    color: #007bff;
+}
 footer {
     grid-area: footer;
     background-color: #333333;
