@@ -20,12 +20,14 @@ main {
     grid-area: contents;
     background-color: #555555;
     color: #f0f0f0;
+    padding: 1rem;
 }
 nav {
     grid-area: nav;
     background-color: #444444;
     color: #f0f0f0;
     text-align: end;
+    padding: 1rem;
     margin-left: -1rem;
 }
 footer {
