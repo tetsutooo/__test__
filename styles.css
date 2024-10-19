@@ -2,7 +2,7 @@ body {
     display: grid;
     min-height: 100vh;
     grid-template-rows: 100px 1fr 100px;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 1fr 3fr;
     grid-template-areas:
         "header header"
         "nav contents"
@@ -25,6 +25,7 @@ nav {
     grid-area: nav;
     background-color: #444444;
     color: #f0f0f0;
+    text-align: end;
     margin-left: -1rem;
 }
 footer {
