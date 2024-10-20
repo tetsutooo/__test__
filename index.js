@@ -43,11 +43,15 @@ async function run() {
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 x: {
                     title: {
                         display: true,
                         text: 'X'
+                    },
+                    ticks: {
+                        maxTicksLimit: 6 // X軸のラベル数を制限
                     }
                 },
                 y: {
@@ -57,6 +61,11 @@ async function run() {
                     },
                     min: 0,
                     max: 1
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false // 凡例を非表示
                 }
             },
             animation: {
