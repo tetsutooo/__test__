@@ -20,7 +20,7 @@ async function run() {
 
     const heatmapCanvas = document.getElementById('heatmapCanvas');
     heatmapCanvas.width = 256; // width;
-    heatmapCanvas.height = 256 + 10; // height;
+    heatmapCanvas.height = 256; // height;
 
     const colorbarCanvas = document.getElementById('colorbarCanvas');
     colorbarCanvas.width = 80;  // カラーバーの幅を80pxに設定
