@@ -74,6 +74,6 @@ footer {
 #graphCanvas {
     grid-column: 3;
     grid-row: 1;
-    width: 400px; /* グラフの幅を指定 */
-    height: 300px; /* グラフの高さを指定 */
+    width: 256; /* グラフの幅を指定 */
+    height: 256; /* グラフの高さを指定 */
 }
