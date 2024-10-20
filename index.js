@@ -6,7 +6,7 @@ let animationId;
 async function run() {
     await init();
     const width = 256;
-    const height = 256 + 10;
+    const height = 256;
     heatmap = HeatmapData.new(width, height);
 
     // 初期データの設定
@@ -19,12 +19,12 @@ async function run() {
     }
 
     const heatmapCanvas = document.getElementById('heatmapCanvas');
-    heatmapCanvas.width = width;
-    heatmapCanvas.height = height;
+    heatmapCanvas.width = 1024; // width;
+    heatmapCanvas.height = 1024; // height;
 
     const colorbarCanvas = document.getElementById('colorbarCanvas');
     colorbarCanvas.width = 80;  // カラーバーの幅を80pxに設定
-    colorbarCanvas.height = height + 10;  // 高さを少し増やす
+    colorbarCanvas.height = 1024 + 10;  // 高さを少し増やす
 
     drawColorbar();  // カラーバーを描画
     animationLoop();
