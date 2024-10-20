@@ -1,8 +1,9 @@
 import init, { HeatmapData } from './pkg/wasm_math.js';
+import * as d3 from 'd3';
 
 let heatmap;
 let animationId;
-let chart;
+let svg, xScale, yScale, line;
 
 async function run() {
     await init();
