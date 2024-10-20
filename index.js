@@ -47,20 +47,22 @@ async function run() {
             maintainAspectRatio: false,
             scales: {
                 x: {
+                    type: 'logarithmic',
                     title: {
                         display: true,
                         text: 'X'
                     },
                     ticks: {
-                        maxTicksLimit: 6 // X軸のラベル数を制限
+                        maxTicksLimit: 4 // X軸のラベル数を制限
                     }
                 },
                 y: {
+                    type: 'logarithmic',
                     title: {
                         display: true,
                         text: 'Value'
                     },
-                    min: 0,
+                    min: 0.001,
                     max: 1
                 }
             },
