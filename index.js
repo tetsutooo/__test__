@@ -19,12 +19,12 @@ async function run() {
     }
 
     const heatmapCanvas = document.getElementById('heatmapCanvas');
-    heatmapCanvas.width = 1024; // width;
-    heatmapCanvas.height = 1024 + 10; // height;
+    heatmapCanvas.width = 512; // width;
+    heatmapCanvas.height = 512 + 10; // height;
 
     const colorbarCanvas = document.getElementById('colorbarCanvas');
     colorbarCanvas.width = 80;  // カラーバーの幅を80pxに設定
-    colorbarCanvas.height = 1024 + 20;  // 高さを少し増やす
+    colorbarCanvas.height = 512 + 20;  // 高さを少し増やす
 
     drawColorbar();  // カラーバーを描画
     animationLoop();
@@ -41,8 +41,8 @@ function drawHeatmap() {
     const ctx = canvas.getContext('2d');
     const imageData = new ImageData(
         new Uint8ClampedArray(heatmap.get_data()),
-        heatmap.width(),
-        heatmap.height()
+        512, //heatmap.width(),
+        512, //heatmap.height()
     );
     ctx.putImageData(imageData, 0, 10);
 }
