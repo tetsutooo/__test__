@@ -50,22 +50,38 @@ function drawHeatmap() {
 function drawColorbar() {
     const canvas = document.getElementById('colorbarCanvas');
     const ctx = canvas.getContext('2d');
-    const gradient = ctx.createLinearGradient(0, canvas.height, 0, 0);
-    
+    const width = canvas.width;
+    const height = canvas.height;
+
+    // グラデーションの描画
+    const gradient = ctx.createLinearGradient(0, height, 0, 0);
     gradient.addColorStop(0, 'rgb(0, 255, 0)');    // 低温（緑）
     gradient.addColorStop(0.5, 'rgb(255, 255, 0)'); // 中温（黄）
     gradient.addColorStop(1, 'rgb(255, 0, 0)');    // 高温（赤）
 
     ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, 0, width, height);
 
-    // 目盛りの追加
+    // メモリと数値の描画
     ctx.fillStyle = 'black';
     ctx.font = '10px Arial';
     ctx.textAlign = 'left';
-    ctx.fillText('1.0', canvas.width + 5, 10);
-    ctx.fillText('0.5', canvas.width + 5, canvas.height / 2);
-    ctx.fillText('0.0', canvas.width + 5, canvas.height - 5);
+    ctx.textBaseline = 'middle';
+
+    const steps = 5;  // メモリの数
+    for (let i = 0; i <= steps; i++) {
+        const y = height - (i / steps) * height;
+        const value = (i / steps).toFixed(1);
+
+        // メモリの線
+        ctx.beginPath();
+        ctx.moveTo(width - 5, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+
+        // 数値
+        ctx.fillText(value, width + 3, y);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', run);
