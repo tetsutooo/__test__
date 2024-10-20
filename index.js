@@ -1,9 +1,9 @@
 import init, { HeatmapData } from './pkg/wasm_math.js';
-import * as d3 from 'd3';
+//import * as d3 from 'd3';
 
 let heatmap;
 let animationId;
-let svg, xScale, yScale, line;
+//let svg, xScale, yScale, line;
 
 async function run() {
     await init();
@@ -164,7 +164,7 @@ async function run() {
 function animationLoop() {
     heatmap.update();  // データの更新
     drawHeatmap();     // 描画
-    updateGraph();
+    // updateGraph();
     animationId = requestAnimationFrame(animationLoop);
 }
 
