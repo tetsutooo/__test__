@@ -39,7 +39,7 @@ async function run() {
                 borderColor: 'blue',
                 borderWidth: 1,
                 fill: false,
-                pointRadius: 0 // ポイントを非表示
+                pointRadius: 0, // ポイントを非表示
             }]
         },
         options: {
@@ -56,7 +56,7 @@ async function run() {
                     ticks: {
                         maxTicksLimit: 4, // X軸のラベル数を制限
                         color: 'white',
-                    }
+                    },
                 },
                 y: {
                     type: 'logarithmic',
@@ -69,7 +69,7 @@ async function run() {
                     max: 1,
                     ticks: {
                         color: 'white',
-                    }
+                    },
                 }
             },
             plugins: {
