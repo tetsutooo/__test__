@@ -50,20 +50,26 @@ async function run() {
                     // type: 'logarithmic',
                     title: {
                         display: true,
-                        text: 'X'
+                        text: 'X',
+                        color: 'white',
                     },
                     ticks: {
-                        maxTicksLimit: 4 // X軸のラベル数を制限
+                        maxTicksLimit: 4, // X軸のラベル数を制限
+                        color: 'white',
                     }
                 },
                 y: {
                     type: 'logarithmic',
                     title: {
                         display: true,
-                        text: 'Value'
+                        text: 'Value',
+                        color: 'white',
                     },
                     min: 0.001,
                     max: 1
+                    ticks: {
+                        color: 'white',
+                    }
                 }
             },
             plugins: {
