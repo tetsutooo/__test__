@@ -70,7 +70,7 @@ function drawColorbar() {
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
 
-    const steps = 5;  // メモリの数
+    const steps = 2;  // メモリの数
     for (let i = 0; i <= steps; i++) {
         const y = 10 + (1 - i / steps) * gradientHeight;  // 位置を調整
         const value = (i / steps).toFixed(1);
