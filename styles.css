@@ -55,3 +55,16 @@ footer {
     margin-left: -1rem;
     margin-bottom: -1rem;
 }
+.heatmap-container {
+    display: flex;
+    align-items: start;
+}
+
+#heatmapCanvas {
+    border: 1px solid #000;
+}
+
+#colorbarCanvas {
+    margin-left: 10px;
+    border: 1px solid #000;
+}
