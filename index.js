@@ -66,7 +66,7 @@ async function run() {
                         color: 'white',
                     },
                     min: 0.001,
-                    max: 1
+                    max: 1,
                     ticks: {
                         color: 'white',
                     }
@@ -75,16 +75,16 @@ async function run() {
             plugins: {
                 legend: {
                     display: false, // 凡例を非表示
-                }
+                },
                 title: {
                     display: true,
                     text: 'Cross-Section',
                     color: 'white',
-                }
+                },
             },
             animation: {
-                duration: 0 // アニメーションを無効化して更新を高速化
-            }
+                duration: 0, // アニメーションを無効化して更新を高速化
+            },
         }
     });
 
