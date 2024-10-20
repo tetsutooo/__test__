@@ -24,7 +24,7 @@ async function run() {
 
     const colorbarCanvas = document.getElementById('colorbarCanvas');
     colorbarCanvas.width = 80;  // カラーバーの幅
-    colorbarCanvas.height = height;
+    colorbarCanvas.height = height + 20;
 
     drawColorbar();  // カラーバーを描画
     animationLoop();
