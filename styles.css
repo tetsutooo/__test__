@@ -57,7 +57,7 @@ footer {
 }
 .heatmap-container {
     display: grid;
-    grid-template-columns: 1fr 80px 1fr; /* ヒートマップとカラーバーの幅を指定 */
+    grid-template-columns: 1fr 80px 256px; /* ヒートマップとカラーバーの幅を指定 */
     grid-gap: 0.5rem; /* ヒートマップとカラーバーの間隔 */
     /*width: fit-content; /* コンテナの幅を内容に合わせる */
 }
