@@ -36,7 +36,8 @@ nav ul {
 }
 nav ul li {
     display: block;
-    margin-right: 20px;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
 }
 nav ul li a {
     text-decoration: none;
