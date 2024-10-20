@@ -74,7 +74,12 @@ async function run() {
             },
             plugins: {
                 legend: {
-                    display: false // 凡例を非表示
+                    display: false, // 凡例を非表示
+                }
+                title: {
+                    display: true,
+                    text: 'Cross-Section',
+                    color: 'white',
                 }
             },
             animation: {
