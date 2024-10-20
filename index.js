@@ -5,8 +5,8 @@ let animationId;
 
 async function run() {
     await init();
-    const width = 100;
-    const height = 100 + 10;
+    const width = 256;
+    const height = 256 + 10;
     heatmap = HeatmapData.new(width, height);
 
     // 初期データの設定
