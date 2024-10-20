@@ -2,6 +2,7 @@ import init, { HeatmapData } from './pkg/wasm_math.js';
 
 let heatmap;
 let animationId;
+let chart;
 
 async function run() {
     await init();
@@ -27,8 +28,42 @@ async function run() {
     colorbarCanvas.height = 256 + 20;  // 高さを少し増やす
 
     const graphCanvas = document.getElementById('graphCanvas');
-    graphCanvas.width = 256;  // グラフの幅
-    graphCanvas.height = 150; // グラフの高さ
+    // Chart.jsでグラフを初期化
+    chart = new Chart(graphCanvas, {
+        type: 'line',
+        data: {
+            labels: Array.from({length: 256}, (_, i) => i),
+            datasets: [{
+                label: 'Heatmap Cross-section at y=128',
+                data: [],
+                borderColor: 'blue',
+                borderWidth: 1,
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'X'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Value'
+                    },
+                    min: 0,
+                    max: 1
+                }
+            },
+            animation: {
+                duration: 0 // アニメーションを無効化して更新を高速化
+            }
+        }
+    });
 
     drawColorbar();  // カラーバーを描画
     animationLoop();
@@ -37,7 +72,7 @@ async function run() {
 function animationLoop() {
     heatmap.update();  // データの更新
     drawHeatmap();     // 描画
-    drawGraph();
+    updateGraph();
     animationId = requestAnimationFrame(animationLoop);
 }
 
@@ -91,51 +126,10 @@ function drawColorbar() {
     }
 }
 
-function drawGraph() {
-    const canvas = document.getElementById('graphCanvas');
-    const ctx = canvas.getContext('2d');
-    const width = canvas.width;
-    const height = canvas.height;
-
-    // キャンバスをクリア
-    ctx.clearRect(0, 0, width, height);
-
-    // グラフの背景とグリッドを描画
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, width, height);
-    ctx.strokeStyle = '#eee';
-    ctx.beginPath();
-    for (let i = 0; i < width; i += 32) {
-        ctx.moveTo(i, 0);
-        ctx.lineTo(i, height);
-    }
-    for (let i = 0; i < height; i += 30) {
-        ctx.moveTo(0, i);
-        ctx.lineTo(width, i);
-    }
-    ctx.stroke();
-
-    // y=128の行のデータを取得
+function updateGraph() {
     const rowData = heatmap.get_row_data(128);
-
-    // グラフを描画
-    ctx.strokeStyle = 'blue';
-    ctx.beginPath();
-    ctx.moveTo(0, height - rowData[0] * height);
-    for (let x = 1; x < width; x++) {
-        ctx.lineTo(x, height - rowData[x] * height);
-    }
-    ctx.stroke();
-
-    // 軸ラベルを描画
-    ctx.fillStyle = 'black';
-    ctx.font = '12px Arial';
-    ctx.textAlign = 'left';
-    ctx.fillText('0', 5, height - 5);
-    ctx.fillText('255', width - 25, height - 5);
-    ctx.textAlign = 'right';
-    ctx.fillText('1.0', width - 5, 15);
-    ctx.fillText('0.0', width - 5, height - 5);
+    chart.data.datasets[0].data = rowData;
+    chart.update();
 }
 
 document.addEventListener('DOMContentLoaded', run);
