@@ -47,7 +47,7 @@ async function run() {
             maintainAspectRatio: false,
             scales: {
                 x: {
-                    type: 'logarithmic',
+                    // type: 'logarithmic',
                     title: {
                         display: true,
                         text: 'X'
