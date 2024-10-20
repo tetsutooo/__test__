@@ -6,7 +6,7 @@ let animationId;
 async function run() {
     await init();
     const width = 100;
-    const height = 110;
+    const height = 100 + 10;
     heatmap = HeatmapData.new(width, height);
 
     // 初期データの設定
@@ -41,8 +41,8 @@ function drawHeatmap() {
     const ctx = canvas.getContext('2d');
     const imageData = new ImageData(
         new Uint8ClampedArray(heatmap.get_data()),
-        heatmap.width(),
-        heatmap.height()
+        5 * heatmap.width(),
+        5 * heatmap.height()
     );
     ctx.putImageData(imageData, 0, 10);
 }
