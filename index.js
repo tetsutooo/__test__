@@ -44,7 +44,7 @@ function drawHeatmap() {
         heatmap.width(),
         heatmap.height()
     );
-    ctx.putImageData(imageData, 0, 0);
+    ctx.putImageData(imageData, 0, 10);
 }
 
 function drawColorbar() {
