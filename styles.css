@@ -56,7 +56,7 @@ footer {
     margin-bottom: -1rem;
 }
 .heatmap-container {
-    display: flex;
+    display: grid;
     grid-template-columns: 1fr 80px 1fr; /* ヒートマップとカラーバーの幅を指定 */
     grid-gap: 0.5rem; /* ヒートマップとカラーバーの間隔 */
     width: fit-content; /* コンテナの幅を内容に合わせる */
@@ -74,6 +74,6 @@ footer {
 #graphCanvas {
     grid-column: 3;
     /*grid-row: 1;*/
-    width: 256; /* グラフの幅を指定 */
+    /*width: 256; /* グラフの幅を指定 */
     /*height: 256;  グラフの高さを指定 */
 }
