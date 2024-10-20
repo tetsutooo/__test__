@@ -1,4 +1,4 @@
-import init, { HeatmapData } from './pkg/heatmap.js';
+import init, { HeatmapData } from './pkg/wasm_math.js';
 
 async function run() {
     await init();
