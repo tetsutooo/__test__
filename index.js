@@ -34,11 +34,12 @@ async function run() {
         data: {
             labels: Array.from({length: 256}, (_, i) => i),
             datasets: [{
-                label: 'Heatmap Cross-section at y=128',
+                label: 'Cross-section at y=128',
                 data: [],
                 borderColor: 'blue',
                 borderWidth: 1,
-                fill: false
+                fill: false,
+                pointRadius: 0 // ポイントを非表示
             }]
         },
         options: {
