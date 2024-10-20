@@ -63,11 +63,11 @@ footer {
 }
 
 #heatmapCanvas {
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     grid-column: 1; /* 1列目に配置 */
 }
 
 #colorbarCanvas {
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     grid-column: 2; /* 2列目に配置 */
 }
