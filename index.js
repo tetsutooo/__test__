@@ -41,8 +41,8 @@ function drawHeatmap() {
     const ctx = canvas.getContext('2d');
     const imageData = new ImageData(
         new Uint8ClampedArray(heatmap.get_data()),
-        5 * heatmap.width(),
-        5 * heatmap.height()
+        heatmap.width(),
+        heatmap.height()
     );
     ctx.putImageData(imageData, 0, 10);
 }
