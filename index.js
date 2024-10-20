@@ -90,7 +90,7 @@ async function run() {
     });*/
 
      // D3.js graph setup
-    const margin = {top: 20, right: 20, bottom: 30, left: 50};
+    /*const margin = {top: 20, right: 20, bottom: 30, left: 50};
     const graphWidth = 400 - margin.left - margin.right;
     const graphHeight = 300 - margin.top - margin.bottom;
 
@@ -155,7 +155,7 @@ async function run() {
         .attr('fill', 'none')
         .attr('stroke', 'blue')
         .attr('stroke-width', 1.5)
-        .attr('class', 'line');
+        .attr('class', 'line');*/
 
     drawColorbar();  // カラーバーを描画
     animationLoop();
