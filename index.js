@@ -23,8 +23,8 @@ async function run() {
     heatmapCanvas.height = height;
 
     const colorbarCanvas = document.getElementById('colorbarCanvas');
-    colorbarCanvas.width = 80;  // カラーバーの幅
-    colorbarCanvas.height = height + 20;
+    colorbarCanvas.width = 80;  // カラーバーの幅を80pxに設定
+    colorbarCanvas.height = height + 20;  // 高さを少し増やす
 
     drawColorbar();  // カラーバーを描画
     animationLoop();
@@ -53,15 +53,16 @@ function drawColorbar() {
     const width = canvas.width;
     const height = canvas.height;
     const barWidth = 30;  // グラデーションバーの幅
+    const gradientHeight = height - 20;  // グラデーションの高さを調整
 
     // グラデーションの描画
-    const gradient = ctx.createLinearGradient(0, height, 0, 0);
+    const gradient = ctx.createLinearGradient(0, gradientHeight, 0, 0);
     gradient.addColorStop(0, 'rgb(0, 255, 0)');    // 低温（緑）
     gradient.addColorStop(0.5, 'rgb(255, 255, 0)'); // 中温（黄）
     gradient.addColorStop(1, 'rgb(255, 0, 0)');    // 高温（赤）
 
     ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, barWidth, height);
+    ctx.fillRect(0, 10, barWidth, gradientHeight);  // 上下に10pxずつマージンを追加
 
     // メモリと数値の描画
     ctx.fillStyle = 'black';
@@ -71,7 +72,7 @@ function drawColorbar() {
 
     const steps = 5;  // メモリの数
     for (let i = 0; i <= steps; i++) {
-        const y = height - (i / steps) * height;
+        const y = 10 + (1 - i / steps) * gradientHeight;  // 位置を調整
         const value = (i / steps).toFixed(1);
 
         // メモリの線
