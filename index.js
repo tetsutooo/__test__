@@ -23,7 +23,7 @@ async function run() {
     heatmapCanvas.height = height;
 
     const colorbarCanvas = document.getElementById('colorbarCanvas');
-    colorbarCanvas.width = 30;  // カラーバーの幅
+    colorbarCanvas.width = 80;  // カラーバーの幅
     colorbarCanvas.height = height;
 
     drawColorbar();  // カラーバーを描画
@@ -52,6 +52,7 @@ function drawColorbar() {
     const ctx = canvas.getContext('2d');
     const width = canvas.width;
     const height = canvas.height;
+    const barWidth = 30;  // グラデーションバーの幅
 
     // グラデーションの描画
     const gradient = ctx.createLinearGradient(0, height, 0, 0);
@@ -60,11 +61,11 @@ function drawColorbar() {
     gradient.addColorStop(1, 'rgb(255, 0, 0)');    // 高温（赤）
 
     ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, width, height);
+    ctx.fillRect(0, 0, barWidth, height);
 
     // メモリと数値の描画
     ctx.fillStyle = 'black';
-    ctx.font = '10px Arial';
+    ctx.font = '12px Arial';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
 
@@ -75,12 +76,12 @@ function drawColorbar() {
 
         // メモリの線
         ctx.beginPath();
-        ctx.moveTo(width - 5, y);
-        ctx.lineTo(width, y);
+        ctx.moveTo(barWidth - 5, y);
+        ctx.lineTo(barWidth, y);
         ctx.stroke();
 
         // 数値
-        ctx.fillText(value, width + 3, y);
+        ctx.fillText(value, barWidth + 5, y);
     }
 }
 
