@@ -12,9 +12,9 @@ async function run() {
     // 初期データの設定
     for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
-            if (Math.random() < 0.1) {  // 10%の確率でホットスポットを生成
+            //if (Math.random() < 0.1) {  // 10%の確率でホットスポットを生成
                 heatmap.set_value(x, y, Math.random());
-            }
+            //}
         }
     }
 
