@@ -27,7 +27,7 @@ async function run() {
     colorbarCanvas.width = 80;  // カラーバーの幅を80pxに設定
     colorbarCanvas.height = 256 + 20;  // 高さを少し増やす
 
-    const graphCanvas = document.getElementById('graphCanvas');
+    /*const graphCanvas = document.getElementById('graphCanvas');
     // Chart.jsでグラフを初期化
     chart = new Chart(graphCanvas, {
         type: 'line',
@@ -86,7 +86,75 @@ async function run() {
                 duration: 0, // アニメーションを無効化して更新を高速化
             },
         }
-    });
+    });*/
+
+     // D3.js graph setup
+    const margin = {top: 20, right: 20, bottom: 30, left: 50};
+    const graphWidth = 400 - margin.left - margin.right;
+    const graphHeight = 300 - margin.top - margin.bottom;
+
+    svg = d3.select('#graphCanvas')
+        .append('svg')
+        .attr('width', graphWidth + margin.left + margin.right)
+        .attr('height', graphHeight + margin.top + margin.bottom)
+        .append('g')
+        .attr('transform', `translate(${margin.left},${margin.top})`);
+
+    xScale = d3.scaleLinear()
+        .domain([0, 255])
+        .range([0, graphWidth]);
+
+    yScale = d3.scaleLog()
+        .domain([0.001, 1])
+        .range([graphHeight, 0]);
+
+    line = d3.line()
+        .x((d, i) => xScale(i))
+        .y(d => yScale(d));
+
+    // Add X axis
+    svg.append('g')
+        .attr('transform', `translate(0,${graphHeight})`)
+        .call(d3.axisBottom(xScale).ticks(4))
+        .attr('color', 'white');
+
+    // Add Y axis
+    svg.append('g')
+        .call(d3.axisLeft(yScale))
+        .attr('color', 'white');
+
+    // Add X axis label
+    svg.append('text')
+        .attr('text-anchor', 'end')
+        .attr('x', graphWidth)
+        .attr('y', graphHeight + margin.top + 20)
+        .text('X')
+        .attr('fill', 'white');
+
+    // Add Y axis label
+    svg.append('text')
+        .attr('text-anchor', 'end')
+        .attr('transform', 'rotate(-90)')
+        .attr('y', -margin.left + 20)
+        .attr('x', -margin.top)
+        .text('Value')
+        .attr('fill', 'white');
+
+    // Add title
+    svg.append('text')
+        .attr('x', (graphWidth / 2))
+        .attr('y', 0 - (margin.top / 2))
+        .attr('text-anchor', 'middle')
+        .style('font-size', '16px')
+        .text('Cross-Section')
+        .attr('fill', 'white');
+
+    // Add path for the line
+    svg.append('path')
+        .attr('fill', 'none')
+        .attr('stroke', 'blue')
+        .attr('stroke-width', 1.5)
+        .attr('class', 'line');
 
     drawColorbar();  // カラーバーを描画
     animationLoop();
@@ -149,10 +217,18 @@ function drawColorbar() {
     }
 }
 
-function updateGraph() {
+/*function updateGraph() {
     const rowData = heatmap.get_row_data(128);
     chart.data.datasets[0].data = rowData;
     chart.update();
+}*/
+
+function updateGraph() {
+    const rowData = heatmap.get_row_data(128);
+    
+    svg.select('.line')
+        .datum(rowData)
+        .attr('d', line);
 }
 
 document.addEventListener('DOMContentLoaded', run);
