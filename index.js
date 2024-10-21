@@ -21,7 +21,7 @@ async function run() {
 
     const heatmapCanvas = document.getElementById('heatmapCanvas');
     heatmapCanvas.width = 256;
-    heatmapCanvas.height = 256;
+    heatmapCanvas.height = 256 + 20;
 
     const colorbarCanvas = document.getElementById('colorbarCanvas');
     colorbarCanvas.width = 80;
