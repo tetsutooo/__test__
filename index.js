@@ -29,7 +29,7 @@ async function run() {
 
     const graphCanvas = document.getElementById('graphCanvas');
     graphCanvas.width = 256;
-    graphCanvas.height = 256;
+    graphCanvas.height = 256 + 20;
 
     // Chart.jsでグラフを初期化
     chart = new Chart(graphCanvas, {
@@ -128,8 +128,8 @@ function drawColorbar() {
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 10, barWidth, gradientHeight);
 
-    ctx.fillStyle = 'black';
-    ctx.font = '12px Arial';
+    ctx.fillStyle = 'white';
+    ctx.font = '10px Arial';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
 
