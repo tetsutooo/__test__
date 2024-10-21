@@ -1,9 +1,8 @@
 import init, { HeatmapData } from './pkg/wasm_math.js';
-//import * as d3 from 'd3';
 
 let heatmap;
 let animationId;
-//let svg, xScale, yScale, line;
+let chart;
 
 async function run() {
     await init();
@@ -14,21 +13,24 @@ async function run() {
     // 初期データの設定
     for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
-            if (x > 16 && x < 240 && y > 16 && y < 240) {  // 10%の確率でホットスポットを生成
+            if (x > 16 && x < 240 && y > 16 && y < 240) {
                 heatmap.set_value(x, y, Math.random());
             }
         }
     }
 
     const heatmapCanvas = document.getElementById('heatmapCanvas');
-    heatmapCanvas.width = 256; // width;
-    heatmapCanvas.height = 256; // height;
+    heatmapCanvas.width = 256;
+    heatmapCanvas.height = 256;
 
     const colorbarCanvas = document.getElementById('colorbarCanvas');
-    colorbarCanvas.width = 80;  // カラーバーの幅を80pxに設定
-    colorbarCanvas.height = 256 + 20;  // 高さを少し増やす
+    colorbarCanvas.width = 80;
+    colorbarCanvas.height = 256 + 20;
 
-    /*const graphCanvas = document.getElementById('graphCanvas');
+    const graphCanvas = document.getElementById('graphCanvas');
+    graphCanvas.width = 256;
+    graphCanvas.height = 256;
+
     // Chart.jsでグラフを初期化
     chart = new Chart(graphCanvas, {
         type: 'line',
@@ -40,7 +42,7 @@ async function run() {
                 borderColor: 'blue',
                 borderWidth: 1,
                 fill: false,
-                pointRadius: 0, // ポイントを非表示
+                pointRadius: 0,
             }]
         },
         options: {
@@ -48,14 +50,13 @@ async function run() {
             maintainAspectRatio: false,
             scales: {
                 x: {
-                    // type: 'logarithmic',
                     title: {
                         display: true,
                         text: 'X',
                         color: 'white',
                     },
                     ticks: {
-                        maxTicksLimit: 4, // X軸のラベル数を制限
+                        maxTicksLimit: 4,
                         color: 'white',
                     },
                 },
@@ -75,7 +76,7 @@ async function run() {
             },
             plugins: {
                 legend: {
-                    display: false, // 凡例を非表示
+                    display: false,
                 },
                 title: {
                     display: true,
@@ -84,87 +85,19 @@ async function run() {
                 },
             },
             animation: {
-                duration: 0, // アニメーションを無効化して更新を高速化
+                duration: 0,
             },
         }
-    });*/
+    });
 
-     // D3.js graph setup
-    /*const margin = {top: 20, right: 20, bottom: 30, left: 50};
-    const graphWidth = 400 - margin.left - margin.right;
-    const graphHeight = 300 - margin.top - margin.bottom;
-
-    svg = d3.select('#graphCanvas')
-        .append('svg')
-        .attr('width', graphWidth + margin.left + margin.right)
-        .attr('height', graphHeight + margin.top + margin.bottom)
-        .append('g')
-        .attr('transform', `translate(${margin.left},${margin.top})`);
-
-    xScale = d3.scaleLinear()
-        .domain([0, 255])
-        .range([0, graphWidth]);
-
-    yScale = d3.scaleLog()
-        .domain([0.001, 1])
-        .range([graphHeight, 0]);
-
-    line = d3.line()
-        .x((d, i) => xScale(i))
-        .y(d => yScale(d));
-
-    // Add X axis
-    svg.append('g')
-        .attr('transform', `translate(0,${graphHeight})`)
-        .call(d3.axisBottom(xScale).ticks(4))
-        .attr('color', 'white');
-
-    // Add Y axis
-    svg.append('g')
-        .call(d3.axisLeft(yScale))
-        .attr('color', 'white');
-
-    // Add X axis label
-    svg.append('text')
-        .attr('text-anchor', 'end')
-        .attr('x', graphWidth)
-        .attr('y', graphHeight + margin.top + 20)
-        .text('X')
-        .attr('fill', 'white');
-
-    // Add Y axis label
-    svg.append('text')
-        .attr('text-anchor', 'end')
-        .attr('transform', 'rotate(-90)')
-        .attr('y', -margin.left + 20)
-        .attr('x', -margin.top)
-        .text('Value')
-        .attr('fill', 'white');
-
-    // Add title
-    svg.append('text')
-        .attr('x', (graphWidth / 2))
-        .attr('y', 0 - (margin.top / 2))
-        .attr('text-anchor', 'middle')
-        .style('font-size', '16px')
-        .text('Cross-Section')
-        .attr('fill', 'white');
-
-    // Add path for the line
-    svg.append('path')
-        .attr('fill', 'none')
-        .attr('stroke', 'blue')
-        .attr('stroke-width', 1.5)
-        .attr('class', 'line');*/
-
-    drawColorbar();  // カラーバーを描画
+    drawColorbar();
     animationLoop();
 }
 
 function animationLoop() {
-    heatmap.update();  // データの更新
-    drawHeatmap();     // 描画
-    // updateGraph();
+    heatmap.update();
+    drawHeatmap();
+    updateGraph();
     animationId = requestAnimationFrame(animationLoop);
 }
 
@@ -184,59 +117,46 @@ function drawColorbar() {
     const ctx = canvas.getContext('2d');
     const width = canvas.width;
     const height = canvas.height;
-    const barWidth = 16;  // グラデーションバーの幅
-    const gradientHeight = height - 20;  // グラデーションの高さを調整
+    const barWidth = 16;
+    const gradientHeight = height - 20;
 
-    // グラデーションの描画
     const gradient = ctx.createLinearGradient(0, gradientHeight, 0, 0);
-    gradient.addColorStop(0, 'rgb(0, 255, 0)');    // 低温（緑）
-    gradient.addColorStop(0.5, 'rgb(255, 255, 0)'); // 中温（黄）
-    gradient.addColorStop(1, 'rgb(255, 0, 0)');    // 高温（赤）
+    gradient.addColorStop(0, 'rgb(0, 255, 0)');
+    gradient.addColorStop(0.5, 'rgb(255, 255, 0)');
+    gradient.addColorStop(1, 'rgb(255, 0, 0)');
 
     ctx.fillStyle = gradient;
-    ctx.fillRect(0, 10, barWidth, gradientHeight);  // 上下に10pxずつマージンを追加
+    ctx.fillRect(0, 10, barWidth, gradientHeight);
 
-    // メモリと数値の描画
     ctx.fillStyle = 'black';
     ctx.font = '12px Arial';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
 
-    const steps = 2;  // メモリの数
+    const steps = 2;
     for (let i = 0; i <= steps; i++) {
-        const y = 10 + (1 - i / steps) * gradientHeight;  // 位置を調整
+        const y = 10 + (1 - i / steps) * gradientHeight;
         const value = (i / steps).toFixed(1);
 
-        // メモリの線
         ctx.beginPath();
         ctx.moveTo(barWidth - 5, y);
         ctx.lineTo(barWidth, y);
         ctx.stroke();
 
-        // 数値
         ctx.fillText(value, barWidth + 5, y);
     }
 }
 
-/*function updateGraph() {
+function updateGraph() {
     const rowData = heatmap.get_row_data(128);
     chart.data.datasets[0].data = rowData;
     chart.update();
-}*/
-
-function updateGraph() {
-    const rowData = heatmap.get_row_data(128);
-    
-    svg.select('.line')
-        .datum(rowData)
-        .attr('d', line);
 }
 
-document.addEventListener('DOMContentLoaded', run);
-
-// アニメーションの停止用関数（必要に応じて）
 function stopAnimation() {
     if (animationId) {
         cancelAnimationFrame(animationId);
     }
 }
+
+document.addEventListener('DOMContentLoaded', run);
