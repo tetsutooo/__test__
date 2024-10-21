@@ -129,7 +129,7 @@ function drawColorbar() {
     ctx.fillRect(0, 10, barWidth, gradientHeight);
 
     ctx.fillStyle = 'white';
-    ctx.font = '10px Arial';
+    ctx.font = '12px Arial';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
 
