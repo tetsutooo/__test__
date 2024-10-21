@@ -52,7 +52,7 @@ async function run() {
                 x: {
                     title: {
                         display: true,
-                        text: 'X',
+                        text: 'avalanche size',
                         color: 'white',
                     },
                     ticks: {
