@@ -80,7 +80,7 @@ async function run() {
                 },
                 title: {
                     display: true,
-                    text: 'Cross-Section',
+                    text: 'Avalanche size distribution',
                     color: 'white',
                 },
             },
