@@ -61,7 +61,7 @@ async function run() {
                     },
                 },
                 y: {
-                    type: 'logarithmic',
+                    // type: 'logarithmic',
                     title: {
                         display: true,
                         text: 'Value',
