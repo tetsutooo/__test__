@@ -79,6 +79,9 @@ footer {
     /* width: 256; /* グラフの幅を指定 */
     /* height: 256; /*  グラフの高さを指定 */
 }
+
+/* userに入力させる場合 */
+/*
 .settings-panel {
     margin-bottom: 20px;
 }
@@ -92,7 +95,8 @@ footer {
 .settings-panel button {
     padding: 5px 15px;
     cursor: pointer;
-}
+}*/
+
 /* radio-buttonの場合 */
 .settings-panel label {
     margin-right: 20px;
