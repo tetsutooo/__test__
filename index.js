@@ -99,12 +99,12 @@ function initChart(width) {
 
 async function run() {
     await init();
-    const widthInput = document.getElementById('widthInput');
-    const updateButton = document.getElementById('updateButton');
+    //const widthInput = document.getElementById('widthInput');
+    //const updateButton = document.getElementById('updateButton');
     
     // 初期化
-    await initHeatmap(parseInt(widthInput.value));
-    drawColorbar();
+    //await initHeatmap(parseInt(widthInput.value));
+    //drawColorbar();
     
     // 更新ボタンのイベントリスナー
     // Userに入力させる
