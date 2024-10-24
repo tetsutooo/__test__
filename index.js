@@ -100,7 +100,7 @@ function initChart(width) {
 async function run() {
     await init();
     //const widthInput = document.getElementById('widthInput');
-    //const updateButton = document.getElementById('updateButton');
+    const updateButton = document.getElementById('updateButton');
     
     // 初期化
     //await initHeatmap(parseInt(widthInput.value));
