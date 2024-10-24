@@ -29,7 +29,7 @@ async function run() {
 
     const graphCanvas = document.getElementById('graphCanvas');
     graphCanvas.width = 256;
-    graphCanvas.height = 256 + 20;
+    graphCanvas.height = 256 + 256;
 
     // Chart.jsでグラフを初期化
     chart = new Chart(graphCanvas, {
