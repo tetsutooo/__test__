@@ -6,7 +6,7 @@ let chart;
 
 async function run() {
     await init();
-    const width = 256;
+    const width = 256; // この値をUserからの入力値に変更する
     const height = 256;
     heatmap = HeatmapData.new(width, height);
 
