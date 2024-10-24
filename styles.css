@@ -93,3 +93,12 @@ footer {
     padding: 5px 15px;
     cursor: pointer;
 }
+/* radio-buttonの場合 */
+.settings-panel label {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.settings-panel input[type="radio"] {
+    margin-right: 5px;
+}
