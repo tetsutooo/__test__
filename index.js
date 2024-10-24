@@ -67,8 +67,8 @@ async function run() {
                         text: 'Value',
                         color: 'white',
                     },
-                    min: 0.001,
-                    max: 1,
+                    //min: 0.001,
+                    //max: 1,
                     ticks: {
                         maxTicksLimit: 5,
                         color: 'white',
