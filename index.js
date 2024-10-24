@@ -28,7 +28,7 @@ async function run() {
     colorbarCanvas.height = 256 + 20;
 
     const graphCanvas = document.getElementById('graphCanvas');
-    graphCanvas.width = 256;
+    graphCanvas.width = 256 + 64;
     graphCanvas.height = 256 + 64;
 
     // Chart.jsでグラフを初期化
