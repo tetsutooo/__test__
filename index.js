@@ -100,11 +100,14 @@ function initChart(width) {
 async function run() {
     await init();
     //const widthInput = document.getElementById('widthInput');
+    const radioButtons = document.querySelectorAll('input[name="widthSelect"]');
     const updateButton = document.getElementById('updateButton');
     
     // 初期化
     //await initHeatmap(parseInt(widthInput.value));
     //drawColorbar();
+    await initHeatmap(256);
+    drawColorbar();
     
     // 更新ボタンのイベントリスナー
     // Userに入力させる
@@ -121,14 +124,13 @@ async function run() {
     });*/
 
     // トグルボタンで入力させる
-    radioButtons.forEach(radio => {
-        radio.addEventListener('change', async () => {
-            const newWidth = parseInt(radio.value);
-            stopAnimation();
-            await initHeatmap(newWidth);
-            drawColorbar();
-            animationLoop();
-        });
+    updateButton.addEventListener('click', async () => {
+        const selectedRadio = document.querySelector('input[name="widthSelect"]:checked');
+        const newWidth = parseInt(selectedRadio.value);
+        stopAnimation();
+        await initHeatmap(newWidth);
+        drawColorbar();
+        animationLoop();
     });
 
     animationLoop();
