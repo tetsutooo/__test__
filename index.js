@@ -8,15 +8,15 @@ async function initHeatmap(width) {
     const height = width; // 正方形を維持
     heatmap = HeatmapData.new(width, height);
 
-    // 初期データの設定
-    const padding = Math.floor(width * 0.0625); // 16/256の比率を維持
-    for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-            if (x > padding && x < (width - padding) && y > padding && y < (height - padding)) {
-                heatmap.set_value(x, y, Math.random());
-            }
-        }
-    }
+    // // 初期データの設定
+    // const padding = Math.floor(width * 0.0625); // 16/256の比率を維持
+    // for (let y = 0; y < height; y++) {
+    //     for (let x = 0; x < width; x++) {
+    //         if (x > padding && x < (width - padding) && y > padding && y < (height - padding)) {
+    //             heatmap.set_value(x, y, Math.random());
+    //         }
+    //     }
+    // }
 
     // キャンバスのサイズを更新
     const heatmapCanvas = document.getElementById('heatmapCanvas');
