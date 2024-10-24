@@ -56,7 +56,7 @@ async function run() {
                         color: 'white',
                     },
                     ticks: {
-                        maxTicksLimit: 4,
+                        maxTicksLimit: 5,
                         color: 'white',
                     },
                 },
@@ -70,6 +70,7 @@ async function run() {
                     min: 0.001,
                     max: 1,
                     ticks: {
+                        maxTicksLimit: 5,
                         color: 'white',
                     },
                 }
