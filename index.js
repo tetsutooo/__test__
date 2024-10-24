@@ -99,19 +99,18 @@ function initChart(width) {
 
 async function run() {
     await init();
-    //const widthInput = document.getElementById('widthInput');
-    const radioButtons = document.querySelectorAll('input[name="widthSelect"]');
+    const widthInput = document.getElementById('widthInput');
+    //const radioButtons = document.querySelectorAll('input[name="widthSelect"]');
     const updateButton = document.getElementById('updateButton');
     
     // 初期化
-    //await initHeatmap(parseInt(widthInput.value));
-    //drawColorbar();
-    await initHeatmap(256);
+    await initHeatmap(parseInt(widthInput.value));
+    //await initHeatmap(256);
     drawColorbar();
     
     // 更新ボタンのイベントリスナー
     // Userに入力させる
-    /*updateButton.addEventListener('click', async () => {
+    updateButton.addEventListener('click', async () => {
         const newWidth = parseInt(widthInput.value);
         if (newWidth >= 32 && newWidth <= 1024) {
             stopAnimation();
@@ -121,17 +120,17 @@ async function run() {
         } else {
             alert('Width must be between 32 and 1024');
         }
-    });*/
-
-    // トグルボタンで入力させる
-    updateButton.addEventListener('click', async () => {
-        const selectedRadio = document.querySelector('input[name="widthSelect"]:checked');
-        const newWidth = parseInt(selectedRadio.value);
-        stopAnimation();
-        await initHeatmap(newWidth);
-        drawColorbar();
-        animationLoop();
     });
+
+    // // RadioButtonで入力させる
+    // updateButton.addEventListener('click', async () => {
+    //     const selectedRadio = document.querySelector('input[name="widthSelect"]:checked');
+    //     const newWidth = parseInt(selectedRadio.value);
+    //     stopAnimation();
+    //     await initHeatmap(newWidth);
+    //     drawColorbar();
+    //     animationLoop();
+    // });
 
     animationLoop();
 }
