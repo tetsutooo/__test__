@@ -107,7 +107,8 @@ async function run() {
     drawColorbar();
     
     // 更新ボタンのイベントリスナー
-    updateButton.addEventListener('click', async () => {
+    // Userに入力させる
+    /*updateButton.addEventListener('click', async () => {
         const newWidth = parseInt(widthInput.value);
         if (newWidth >= 32 && newWidth <= 1024) {
             stopAnimation();
@@ -117,6 +118,17 @@ async function run() {
         } else {
             alert('Width must be between 32 and 1024');
         }
+    });*/
+
+    // トグルボタンで入力させる
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', async () => {
+            const newWidth = parseInt(radio.value);
+            stopAnimation();
+            await initHeatmap(newWidth);
+            drawColorbar();
+            animationLoop();
+        });
     });
 
     animationLoop();
