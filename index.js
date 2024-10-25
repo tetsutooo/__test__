@@ -1,12 +1,13 @@
-import init, { HeatmapData } from './pkg/wasm_math.js';
+import init, { SingleDefectModel } from './pkg/wasm_math.js';
 
-let heatmap;
+let single;
 let animationId;
 let chart;
 
 async function initHeatmap(width) {
     const height = width; // 正方形を維持
-    heatmap = HeatmapData.new(width, height);
+    
+    single = SingleDefectModel.new();
 
     // // 初期データの設定
     // const padding = Math.floor(width * 0.0625); // 16/256の比率を維持
@@ -146,9 +147,9 @@ function drawHeatmap() {
     const canvas = document.getElementById('heatmapCanvas');
     const ctx = canvas.getContext('2d');
     const imageData = new ImageData(
-        new Uint8ClampedArray(heatmap.get_data()),
-        heatmap.width(),
-        heatmap.height()
+        new Uint8ClampedArray(single.get_configuration()),
+        single.width(),
+        single.width()
     );
     ctx.putImageData(imageData, 0, 10);
 }
@@ -189,7 +190,7 @@ function drawColorbar() {
 }
 
 function updateGraph() {
-    const rowData = heatmap.get_row_data(Math.floor(heatmap.height() / 2));
+    const rowData = single.get_size_distribution());
     chart.data.datasets[0].data = rowData;
     chart.update();
 }
